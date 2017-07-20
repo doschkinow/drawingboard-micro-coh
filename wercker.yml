@@ -8,7 +8,7 @@ build:
         code: echo "<settingsSecurity><master>$MASTER</master></settingsSecurity>" > /pipeline/source/master.xml
     - script:
         name: Maven install
-        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml install
+        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
 push:
   steps:
     # Push to public docker repo
