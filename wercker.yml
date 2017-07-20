@@ -3,9 +3,9 @@ build:
   steps:
     # generate master   
     - script:
-    # Build Spring Boot Sample application
         name: master
         code: echo "<settingsSecurity><master>$MASTER</master></settingsSecurity>" > /pipeline/source/master.xml
+    # Build Spring Boot Sample application
     - script:
         name: Maven install
         code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
@@ -18,7 +18,7 @@ push:
         tag: latest
         repository: $DOCKER_REPOSITORY
         registry: https://index.docker.io/v1/
-        cmd: java -Dcoherence.cacheconfig=drawingboard-coherence-cache-config.xml -Dcoherence.wka=occs-occs-wkr-1 -Dcoherence.wka2=occs-occs-wkr-2 -jar  /pipeline/source/target/drawingboard-micro-coherence-1.0-SNAPSHOT-jar-with-dependencies.jar
+        entrypoint: java -Dcoherence.cacheconfig=drawingboard-coherence-cache-config.xml -Dcoherence.wka=occs-occs-wkr-1 -Dcoherence.wka2=occs-occs-wkr-2 -jar  /pipeline/source/target/drawingboard-micro-coherence-1.0-SNAPSHOT-jar-with-dependencies.jar
 restart-occs:
   steps:
     # Manage Oracle Container Cloud Service container
