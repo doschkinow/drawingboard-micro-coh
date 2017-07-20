@@ -1,10 +1,14 @@
 box: combient/java-mvn
 build:
   steps:
+    # generate master   
+    - script:
     # Build Spring Boot Sample application
+        name: master
+        code: echo "<settingsSecurity><master>$MASTER</master></settingsSecurity>" > /pipeline/source/master.xml
     - script:
         name: Maven install
-        code: mvn install
+        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml install
 push:
   steps:
     # Push to public docker repo
