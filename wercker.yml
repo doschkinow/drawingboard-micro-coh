@@ -3,12 +3,12 @@ build:
   steps:
     # generate master   
     - script:
-        name: master
+        name: master security settings
         code: echo "<settingsSecurity><master>$MASTER</master></settingsSecurity>" > /pipeline/source/master.xml
     # Build Spring Boot Sample application
     - script:
-        name: Maven install
-        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
+        name: Maven package
+        code: mvn -v -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
 push:
   steps:
     # Push to public docker repo
