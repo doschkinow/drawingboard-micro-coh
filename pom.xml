@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>drawingboard-micro-coherence</artifactId>
+    <artifactId>drawingboard-micro-coh</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>drawingboard-micro-coherence</name>
+    <name>drawingboard-micro-coh</name>
 
     <repositories>
         <repository>
