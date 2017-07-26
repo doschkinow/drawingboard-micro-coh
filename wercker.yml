@@ -7,7 +7,7 @@ build:
         code: echo "<settingsSecurity><master>$MASTER</master></settingsSecurity>" > /pipeline/source/master.xml
     # Build Spring Boot Sample application
     - script:
-        name: Maven package
+        name: Maven package one-jar
         code: mvn -X -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
 push:
   steps:
