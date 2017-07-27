@@ -11,7 +11,7 @@ build:
         code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
 push:
   steps:
-    # Push to public docker repo
+    # Push to public docker repository
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
