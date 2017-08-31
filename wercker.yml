@@ -8,7 +8,7 @@ build:
     # Build microservice cache
     - script:
         name: Maven package one-jar
-        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
+        code: #mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
 push:
   steps:
     # Push to public docker repository 
@@ -33,4 +33,4 @@ mcast-route:
     # add a multicast route for coherence cluster
     - script:
         name: multicast route
-        code: route add -net $NET -netmask $NETMASK dev $IF
+        code: sudo route add -net $NET -netmask $NETMASK dev $IF
