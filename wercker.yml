@@ -15,7 +15,7 @@ push:
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-        tag: latest
+        tag: swarm
         repository: $DOCKER_REPOSITORY
         registry: https://index.docker.io/v1/
         entrypoint: java -Dcoherence.cluster="oracle's cluster" -Dcoherence.cacheconfig=drawingboard-coherence-cache-config.xml -Dcoherence.wka=occs-occs-wkr-1 -Dcoherence.wka2=occs-occs-wkr-2 -jar  /pipeline/source/target/drawingboard-micro-coh-1.0-SNAPSHOT-jar-with-dependencies.jar
@@ -27,4 +27,10 @@ restart-occs:
         occs_password: $OCCS_PASSWORD
         rest_server_url: $REST_SERVER_URL
         function: $FUNCTION
-        deployment_name: $DEPLOYMENT_NAME 
+        deployment_name: $DEPLOYMENT_NAME
+mcast-route:
+  steps:
+    # add a multicast route for coherence cluster
+    - script:
+        name: multicast route
+        code: route add -net $NET -netmask $NETMASK dev $IF
