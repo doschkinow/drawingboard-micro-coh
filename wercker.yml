@@ -9,6 +9,9 @@ build:
     - script:
         name: Maven package one-jar
         code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
+    - script:
+        name: clean up
+        code: rm /pipeline/source/master.xml
 push:
   steps:
     # Push to public docker repository 
@@ -29,3 +32,18 @@ restart-occs:
         rest_server_url: $REST_SERVER_URL
         function: $FUNCTION
         deployment_name: $DEPLOYMENT_NAME
+swarm-update-service:
+  steps:
+    # generate ssh key
+    - script:
+        name: put ssh key in a file
+        code: echo "SSHKEY" > /pipeline/source/sshkey
+    # update swarm service
+    - script:
+        name: update swarm service
+        code: ssh -i /pipeline/source/sshkey ubuntu@129.144.150.24 docker service ls
+    - script:
+        name: clean up
+        code: rm /pipeline/source/sshkey
+        
+
