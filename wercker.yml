@@ -41,7 +41,7 @@ swarm-update-service:
     # update swarm service
     - script:
         name: update swarm service
-        code: ssh -i /pipeline/source/sshkey ubuntu@129.144.150.24 docker service ls
+        code: ssh -i /pipeline/source/sshkey -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
     - script:
         name: clean up
         code: rm /pipeline/source/sshkey
