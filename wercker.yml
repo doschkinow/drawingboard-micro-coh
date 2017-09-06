@@ -8,7 +8,7 @@ build:
     # Build microservice cache
     - script:
         name: Maven package one-jar
-        code: #mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
+        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
     - script:
         name: clean up
         code: rm /pipeline/source/master.xml
@@ -41,7 +41,7 @@ swarm-update-service:
     # update swarm service 
     - script:
         name: update swarm service
-        code: ssh -i /pipeline/source/sshkey -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
+        code: ssh -v -i /pipeline/source/sshkey -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
     - script:
         name: clean up
         code: rm /pipeline/source/sshkey
