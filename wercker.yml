@@ -8,7 +8,7 @@ build:
     # Build microservice cache
     - script:
         name: Maven package one-jar
-        code: mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
+        code: #mvn -s /pipeline/source/settings.xml -Dsettings.security=/pipeline/source/master.xml package
     - script:
         name: clean up
         code: rm /pipeline/source/master.xml
@@ -37,7 +37,7 @@ swarm-update-service:
     # generate ssh key
     - script:
         name: put ssh key in a file
-        code: echo "SSHKEY" > /pipeline/source/sshkey
+        code: echo "SSHKEY" > /pipeline/source/sshkey; chmod 600 /pipeline/source/sshkey
     # update swarm service
     - script:
         name: update swarm service
