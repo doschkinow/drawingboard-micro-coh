@@ -38,7 +38,7 @@ swarm-update-service:
     - script:
         name: put ssh key in a file
         code: echo "SSHKEY" > /pipeline/source/sshkey; chmod 600 /pipeline/source/sshkey
-    # update swarm service
+    # update swarm service 
     - script:
         name: update swarm service
         code: ssh -i /pipeline/source/sshkey -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
