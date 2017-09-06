@@ -37,13 +37,14 @@ swarm-update-service:
     # generate ssh key
     - script:
         name: put ssh key in a file
-        code: echo $SSHKEY_PART >> sshkey-part; echo '-----END RSA PRIVATE KEY-----' >> sshkey-part; chmod 600 /pipeline/source/sshkey-part
+        code: echo $SSHKEY_PART >> sshkey-part; echo '-----END RSA PRIVATE KEY-----' >> sshkey-part; chmod 600 sshkey-part
     # update swarm service 
     - script:
         name: update swarm service
-        code: cat sshkey-part; ssh -v -i sshkey-part -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
+        code: ssh -i sshkey-part -o StrictHostKeyChecking=no ubuntu@129.144.150.24 docker service ls
+    # clean up
     - script:
-        name: clean up
-        code: rm /pipeline/source/sshkey
+        name: clean
+        code: rm sshkey-part
         
 
