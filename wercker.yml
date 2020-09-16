@@ -7,7 +7,7 @@ build:
         code: mvn package
     - script:
         name: change file mode
-        code: chmod -R +x *.bash
+        code: chmod +x k8s/*.bash
 push:
   steps:
     # Push to public docker repository 
