@@ -31,12 +31,12 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.oracle.coherence</groupId>
+            <groupId>com.oracle.coherence.ce</groupId>
             <artifactId>coherence</artifactId>
             <version>${coherence.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.oracle.coherence</groupId>
+            <groupId>com.oracle.coherence.ce</groupId>
             <artifactId>coherence-jcache</artifactId>
             <version>${coherence.version}</version>
         </dependency>
@@ -44,12 +44,6 @@
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
             <version>${jcache.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.9</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -129,7 +123,7 @@
     </build>
 
     <properties>
-        <coherence.version>12.2.1-0-0</coherence.version>
+        <coherence.version>20.06</coherence.version>
         <jcache.version>1.0.0</jcache.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
