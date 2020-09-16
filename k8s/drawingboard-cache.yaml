@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drawingboard-cache
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: drawingboard-cache
+  template:
+    metadata:
+      labels:
+        app: drawingboard-cache
+    spec:
+      containers:
+      - name: drawingboard-cache
+        image: doschkinow/drawingboard-micro-coh:latest
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: drawingboard-cache
+spec:
+    selector:
+        app: drawingboard-cache
+    clusterIP: None
+    ports:
+    - name: bla
+      port: 1234
+      protocol: TCP
+      targetPort: 1234
+
